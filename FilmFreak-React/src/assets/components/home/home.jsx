@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import Styles from './home.module.css';
 
 const cargarCincoPopulares = async (setPopulares, setError) => {
@@ -49,7 +50,7 @@ export const Home = () => {
     return (
         <>
             <section className={Styles.more_popular_hero}>
-                <a href={`movie.html?id=${popularObj.id}`} className={Styles.headerURL} id="headerURL">
+                <Link to={`/movie/${popularObj.id}`} className={Styles.headerURL}>
                     <div className={Styles.container_principal_popular}>
                         <div className={Styles.container_backdrop_popular} id="myHeader" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${popularObj.backdrop_path})` }}>
                         </div>
@@ -64,15 +65,15 @@ export const Home = () => {
                             </div>
                         </div>
                     </div>
-                </a>
+                </Link>
             </section>
 
-            <a href="search.html">
+            <Link to="/search">
                 <section className="container-invitation-filter raleway-bold">
                     <p>¿Buscas una película?</p>
                     <p>Presiona aquí</p>
                 </section>
-            </a>
+            </Link>
             <main>
                 <section className="section-in-theaters" id="sectionTeatros">
                     <h3 className="raleway-bold">Ahora mismo en teatros</h3>
