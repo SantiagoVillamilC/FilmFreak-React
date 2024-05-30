@@ -1,0 +1,102 @@
+.more_popular_hero {
+	padding: 0 8vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container_principal_popular {
+	border-radius: 10px;
+	backdrop-filter: blur(5px);
+	background-color: rgba(255, 255, 255, 0.1);
+	width: 100%;
+	height: 85vh;
+}
+
+.container_backdrop_popular {
+	border-radius: 10px 10px 0 0;
+	width: 100%;
+	height: 85%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+
+.container_info_popular {
+	height: 15%;
+	border-radius: 0 0 10px 10px;
+}
+.format_container_info_popular{
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	grid-auto-rows: auto;
+	grid-gap: 1rem;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	padding: 0 1rem;
+	border-radius: 0 0 10px 10px;
+	height: 100%;
+}
+
+.poster_popular {
+	grid-column: auto/span 3;
+	aspect-ratio: 3/4;
+	width: 95%;
+	margin-top: -100%;
+	border-radius: 10px;
+}
+
+.play_button{
+	grid-column: 4/span 1;
+	height: 150%;
+	margin-top: -45%;
+	width: 150%;
+	margin-left: -1rem;
+	color: var(--white-text);
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 6rem;
+}
+.titles_popular{
+	grid-column: 5/span 8;
+	margin-left: 1rem;
+}
+.titles_popular h2{
+	font-size: 1.7rem;
+}
+.headerURL {
+	color: var(--white-text);
+	transition: color 1s; /* Transición para el color de texto */
+    width: 100%;
+
+	&:hover {
+		transform: scale(1.03);
+		transition: transform 1s;
+
+		/* Cambios en el header cuando .headerURL se hoverea */
+		.format_container_info-popular {
+			background-color: rgba(255, 255, 255, 0.2);
+			transition: 1s;
+		}
+		i{
+			/* color: var(--background); */
+			transition: 1.2s;
+		}
+	}
+
+	&:not(:hover) {
+		transition: 1.2s;
+
+		.format_container_info_popular {
+			transition: 1s;
+		}
+	}
+}
+
+.headerURL:hover{
+    
+}
