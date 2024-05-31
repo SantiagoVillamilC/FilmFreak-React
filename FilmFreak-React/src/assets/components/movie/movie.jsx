@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Styles from './movie.module.css';
 
 const cargarInformacionPelicula = async (movieId, setMovieData, setError) => {
     const apiKey = 'cace972f4626db6a5ee3ae755a24b03d';
@@ -81,65 +82,65 @@ export const Movie = () => {
     return (
         <>
             <header id="header" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})` }}>
-                <div className="headerContainer" id="tituloFrasePelicula">
-                    <div className="containerTituloPelicula">
-                        <h2 className="tituloPelicula" id="tituloPelicula">{title}</h2>
-                        <h3 className="frasePelicula" id="frasePelicula">{tagline}</h3>
+                <div className={Styles.headerContainer} id="tituloFrasePelicula">
+                    <div className={Styles.containerTituloPelicula}>
+                        <h2 className={Styles.tituloPelicula} id="tituloPelicula">{title}</h2>
+                        <h3 className={Styles.frasePelicula} id="frasePelicula">{tagline}</h3>
                     </div>
-                    <div className="container-go-bottom">
+                    <div className={Styles.container_go_bottom}>
                         <p>Desliza hacia abajo</p>
                         <i className="bi bi-arrow-down"></i>
                     </div>
                 </div>
             </header>
             <main>
-                <section className="container-movie-info">
-                    <div id="posterPeli" className="posterPeli">
-                        <img className="poster" src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt="movie poster" />
+                <section className={Styles.container_movie_info}>
+                    <div id="posterPeli" className={Styles.posterPeli}>
+                        <img className={Styles.poster} src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt="movie poster" />
                     </div>
-                    <div className="container-movieInfo">
-                        <div className="divisor-movieInfo">
-                            <div id="movieInfo" className="movieInfo">
-                                <div className="container-titles">
+                    <div className={Styles.container_movie_info}>
+                        <div className={Styles.divisor_movie_info}>
+                            <div id="movieInfo" className={Styles.movieInfo}>
+                                <div className={Styles.container_titles}>
                                     <h2>{title}</h2>
                                     <h3>{tagline}</h3>
                                 </div>
-                                <div className="container-plot">
+                                <div className={Styles.container_plot}>
                                     <p><strong>Sinopsis:</strong></p>
                                     <p>{overview}</p>
                                 </div>
-                                <div className="genres-container">
+                                <div className={Styles.genres_container}>
                                     <p><strong>Géneros:</strong></p>
                                     {genres.map((genre) => (
                                         <div className="genre" key={genre.id}><strong>{genre.name}</strong></div>
                                     ))}
                                 </div>
-                                <div className="original-language-container">
+                                <div className={Styles.original_language_container}>
                                     <p><strong>Titulo Original:</strong> {original_title}</p>
                                     <p><strong>Idioma Original:</strong> {original_language}</p>
                                     <p><strong>Estado:</strong> {status}</p>
                                 </div>
                             </div>
-                            <div className="container-score">
-                                <div id="scoreDiv" className="scoreDiv" style={{ backgroundColor: color }}>
-                                    <p id="voteAverageElement" className="rating-circle"><strong>{formattedVoteAverage}</strong></p>
+                            <div className={Styles.container_score}>
+                                <div id="scoreDiv" className={Styles.scoreDiv} style={{ backgroundColor: color }}>
+                                    <p id="voteAverageElement" className={Styles.rating_circle}><strong>{formattedVoteAverage}</strong></p>
                                 </div>
                                 <div id="scoreFace" style={{ color }}>
                                     <i className={getEmoji(formattedVoteAverage)}></i>
                                 </div>
-                                <p className="votes-count"><strong>{vote_count}</strong> votos</p>
+                                <p className={Styles.votes_count}><strong>{vote_count}</strong> votos</p>
                             </div>
                         </div>
-                        <div id="barInfo" className="barInfo">
-                            <div className="bar-info-icon">
+                        <div id="barInfo" className={Styles.barInfo}>
+                            <div className={Styles.bar_info_icon}>
                                 <i className="bi bi-calendar3"></i>
                                 <p><strong>Lanzamiento:</strong> {release_date}</p>
                             </div>
-                            <div className="bar-info-icon">
+                            <div className={Styles.bar_info_icon}>
                                 <i className="bi bi-clock"></i>
                                 <p><strong>Duración:</strong> {durationString}</p>
                             </div>
-                            <div className="bar-info-icon">
+                            <div className={Styles.bar_info_icon}>
                                 <i className="bi bi-cash-coin"></i>
                                 <p><strong>Presupuesto:</strong> {formattedBudget}</p>
                             </div>
