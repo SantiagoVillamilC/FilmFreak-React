@@ -21,14 +21,36 @@ const cargarCincoPopulares = async (setPopulares, setError) => {
     }
 };
 
+const cargarPeliculasEnTeatros = async (setPeliculasEnTeatros, setError) => {
+    try {
+        const respuesta = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=cace972f4626db6a5ee3ae755a24b03d&language=es-MX`);
+
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+            const peliculas = datos.results.slice(0, 5);
+            setPeliculasEnTeatros(peliculas);
+        } else if (respuesta.status === 401) {
+            setError('Error de comunicación con el servidor');
+        } else if (respuesta.status === 404) {
+            setError('Película no encontrada');
+        } else {
+            setError('Hubo un error');
+        }
+    } catch (error) {
+        setError(error.message);
+    }
+};
+
 export const Home = () => {
 
     const [populares, setPopulares] = useState([]);
+    const [peliculasEnTeatros, setPeliculasEnTeatros] = useState([]);
     const [index, setIndex] = useState(0);
     const [error, setError] = useState('');
 
     useEffect(() => {
         cargarCincoPopulares(setPopulares, setError);
+        cargarPeliculasEnTeatros(setPeliculasEnTeatros, setError);
 
         const interval = setInterval(() => {
             setIndex(prevIndex => (prevIndex + 1) % 5);
@@ -41,12 +63,12 @@ export const Home = () => {
         return <div>Error: {error}</div>;
     }
 
-    if (populares.length === 0) {
+    if (populares.length === 0 || peliculasEnTeatros.length === 0) {
         return <div>Cargando...</div>;
     }
 
     const popularObj = populares[index];
-    
+
     return (
         <>
             <section className={Styles.more_popular_hero}>
@@ -69,15 +91,22 @@ export const Home = () => {
             </section>
 
             <Link to="/search">
-                <section className="container-invitation-filter raleway-bold">
+                <section className={Styles.container_invitation_filter}>
                     <p>¿Buscas una película?</p>
                     <p>Presiona aquí</p>
                 </section>
             </Link>
             <main>
-                <section className="section-in-theaters" id="sectionTeatros">
-                    <h3 className="raleway-bold">Ahora mismo en teatros</h3>
-                    <div className="contenedorTeatros raleway-normal" id="containerTheaters"></div>
+                <section className={Styles.section_in_theaters} id="sectionTeatros">
+                    <h3 className={Styles.raleway_bold}>Ahora mismo en teatros</h3>
+                    <div className={Styles.contenedorTeatros}>
+                        {peliculasEnTeatros.map(pelicula => (
+                            <Link to={`/movie/${pelicula.id}`} key={pelicula.id} className={Styles.peliculaTeatros}>
+                                <img className={Styles.peliTeatro} src={`https://image.tmdb.org/t/p/original/${pelicula.backdrop_path}`} alt="movie backdrop" />
+                                <h3 className={Styles.tituloTeatro}>{pelicula.title}</h3>
+                            </Link>
+                        ))}
+                    </div>
                 </section>
                 <section className="section-popular" id="sectionPopular">
                     <div className="header-section-pelis">
