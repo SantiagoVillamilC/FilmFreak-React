@@ -59,3 +59,25 @@ button i {
 
 	--white-text: #e0e0e0;
 }
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+/* Estilo del scrollbar */
+*::-webkit-scrollbar {
+	width: 10px;
+	/* Ancho del scrollbar vertical */
+	height: 7px;
+	/* Alto del scrollbar horizontal */
+}
+
+/* Estilo del thumb (barra deslizadora) */
+*::-webkit-scrollbar-thumb {
+	background: linear-gradient(45deg, var(--pink-principal), var(--white-text));
+	border-radius: 10px;
+}
+
+/* Estilo de la pista (track) */
+*::-webkit-scrollbar-track {
+	background: transparent;
+	/* Color de fondo del track */
+}

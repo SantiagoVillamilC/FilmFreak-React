@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Styles from './home.module.css';
+import { PeliculasPopulares } from '../populares/PeliculasPopulares.jsx'; // Importar el componente populares
+import { PeliculasTopRated } from '../topRated/PeliculasTopRated.jsx'; // Importar el nuevo componente
+import { Trailers } from '../trailers/Trailers.jsx';
 
 const cargarCincoPopulares = async (setPopulares, setError) => {
     try {
@@ -108,31 +111,23 @@ export const Home = () => {
                         ))}
                     </div>
                 </section>
-                <section className="section-popular" id="sectionPopular">
-                    <div className="header-section-pelis">
+                <section className={Styles.section_popular} id="sectionPopular">
+                    <div className={Styles.header_section_pelis}>
                         <h3 className="raleway-bold">Populares</h3>
-                        <div className="paginacion raleway-normal">
-                            <button id="btnAnterior"><i className="bi bi-arrow-left-circle-fill"></i></button>
-                            <p id="paginaPopular"></p>
-                            <button id="btnSiguiente"><i className="bi bi-arrow-right-circle-fill"></i></button>
-                        </div>
+                        <PeliculasPopulares />
                     </div>
                     <div className="contenedor" id="contenedor"></div>
                 </section>
                 <section className="section-top-rated">
                     <div className="header-section-pelis">
                         <h3 className="raleway-bold">Lo mejor valorado</h3>
-                        <div className="paginacion raleway-normal">
-                            <button id="btnAnteriorTopRated"><i className="bi bi-arrow-left-circle-fill"></i></button>
-                            <p id="mostrarPaginaTopRated"></p>
-                            <button id="btnSiguienteTopRated"><i className="bi bi-arrow-right-circle-fill"></i></button>
-                        </div>
+                        <PeliculasTopRated />
                     </div>
                     <div className="contenedor" id="contenedorTopRated"></div>
                 </section>
                 <section className="section-trailers" id="sectionTrailers">
                     <h3 className="raleway-bold">Trailers & Videos</h3>
-                    <div className="contenedorTrailers" id="contenedorTrailers"></div>
+                    <Trailers />
                 </section>
             </main>
         </>

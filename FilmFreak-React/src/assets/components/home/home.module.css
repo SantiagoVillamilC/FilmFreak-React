@@ -281,24 +281,7 @@ main {
 	width: 30vw;
 }
 
-.contenedorTrailers {
-	display: flex;
-	/* flex-direction: column; */
-	overflow-x: scroll;
-	/* overflow-y: visible; */
-	gap: 0.5rem;
-	margin-top: 1rem;
-	padding-bottom: 1rem;
-}
-.trailerFrame{
-	background-color: #00FFFF;
-}
 
-iframe {
-	width: 100%;
-	/* height: 20rem; */
-	border-radius: 10px;
-}
 
 .contenedor {
 	/* background-color: #00FFFF; */
@@ -347,7 +330,7 @@ iframe {
 	border-radius: 1rem;
 }
 
-.header-section-pelis {
+.header_sectionpelis {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -382,4 +365,13 @@ iframe {
 	/* border-radius: 100px; */
 	transition: .3s ease all;
 	/* font-size: 1rem; */
+}
+.contenedorTrailers {
+	display: flex;
+	/* flex-direction: column; */
+	overflow-x: scroll;
+	/* overflow-y: visible; */
+	gap: 0.5rem;
+	margin-top: 1rem;
+	padding-bottom: 1rem;
 }
